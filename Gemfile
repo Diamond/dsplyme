@@ -35,6 +35,8 @@ group :doc do
 end
 
 gem 'slim'
+gem 'pry'
+gem 'rubyzip', require: 'zip/zip'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

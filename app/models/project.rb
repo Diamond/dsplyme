@@ -34,8 +34,8 @@ class Project < ActiveRecord::Base
     Zip::ZipFile.open(file) do |zip_file|
       zip_file.each do |f|
         if f.name.include?('.unity3d')
-          self.path = "#{destination}/#{f.name}"
-          binding.pry
+          project_name = self.file_data.original_filename.gsub('.zip', '')
+          self.path = "/data/#{project_name}/#{f.name}"
           f_path = File.join(destination, f.name)
           FileUtils.mkdir_p(File.dirname(f_path))
           zip_file.extract(f, f_path) unless File.exist?(f_path)

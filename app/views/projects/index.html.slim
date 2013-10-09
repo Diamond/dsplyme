@@ -1,3 +1,6 @@
 h1 Projects
+= link_to "New Project", new_project_path
 ul
-  li= link_to "New Project", new_project_path
+  - @projects.each do |p|
+    li = link_to p.title, p, data: { no_turbolink: true }
+

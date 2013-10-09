@@ -37,6 +37,7 @@ end
 gem 'slim'
 gem 'pry'
 gem 'rubyzip', require: 'zip/zip'
+gem 'sorcery'
 
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'

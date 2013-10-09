@@ -1,21 +1,36 @@
 class Project < ActiveRecord::Base
   before_create :upload
   attr_accessor :file_data
-  #validate :identifier, presence: true, uniqueness: true
-  #validate :title, presence: true, uniqueness: true 
+  validate :identifier, presence: true, uniqueness: true
+  validate :title, presence: true, uniqueness: true 
 
   def data_path
     Rails.root.join('public', 'data', self.path)
   end
 
-  def get_html
-    content = ''
-    File.open(self.path, "r") { |f| content = f.read }
-    return content
-  end
-
   private
   def upload
+    self.identifier = Digest::MD5.hexdigest(self.title + Time.now.to_s)
+    pieces = self.file_data.original_filename.split('.')
+    if pieces.last.downcase == 'zip'
+      handle_zip_file
+    elsif pieces.last.downcase == 'unity3d'
+      handle_unity3d_file
+    else
+      raise Exception.new("Invalid file type uploaded!")
+    end
+  end
+
+  def handle_unity3d_file
+    FileUtils.mkdir_p(Rails.root.join('public', 'data', self.identifier))
+    path = Rails.root.join('public', 'data', self.identifier, self.file_data.original_filename)
+    File.open(path, 'wb+') do |f|
+      f.write(self.file_data.read)
+    end
+    self.path = "/data/#{self.identifier}/#{self.file_data.original_filename}" 
+  end
+
+  def handle_zip_file
     path = Rails.root.join('public', 'data', self.file_data.original_filename)
     file_data = self.file_data.read
     File.open(path, 'wb+') do |f|
@@ -27,7 +42,6 @@ class Project < ActiveRecord::Base
     FileUtils::mkdir_p(directory)
     
     unzip_file(path, directory)
-    self.identifier = Digest::MD5.hexdigest(file_data)
   end
 
   def unzip_file (file, destination)

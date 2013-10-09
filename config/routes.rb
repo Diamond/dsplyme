@@ -1,4 +1,8 @@
 Showoff::Application.routes.draw do
+  get "sessions/new"
+  get "sessions/destroy"
+  get "users/new"
+  get "users/create"
   resources :projects
   root 'homepage#index'
 

@@ -22,12 +22,25 @@ class ProjectsController < ApplicationController
   end
 
   def edit
+    @project = current_user.projects.find(params[:id])
   end
 
   def update
+    @project = current_user.projects.find(params[:id])
+    if @project.update(project_params)
+      redirect_to @project, notice: "Updated project successfully!"
+    else
+      redirect_to :root, alert: "Failed to update project!"
+    end
   end
 
   def destroy
+    @project = current_user.projects.find(params[:id])
+    if @project.destroy
+      redirect_to :root, notice: "Deleted project!"
+    else
+      redirect_to :root, alert: "Failed to delete project!"
+    end
   end
 
   def project_params

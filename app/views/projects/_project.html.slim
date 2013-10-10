@@ -1,0 +1,6 @@
+li
+  = link_to project.title, project, data: { no_turbolink: true }
+  |  | 
+  = link_to "Edit", edit_project_path(project)
+  |  | 
+  = link_to "Delete", project, method: :delete, confirm: "This will delete the project! Do you want to continue?"

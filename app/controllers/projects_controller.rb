@@ -7,6 +7,7 @@ class ProjectsController < ApplicationController
 
   def show
     @project = Project.find(params[:id])
+    redirect_to :root, alert: "You do not have permission to view this project!" unless @project.viewable?(current_user)
   end
 
   def new
@@ -44,6 +45,6 @@ class ProjectsController < ApplicationController
   end
 
   def project_params
-    params.require(:project).permit(:title, :file_data)
+    params.require(:project).permit(:title, :file_data, :public)
   end
 end

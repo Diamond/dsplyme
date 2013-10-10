@@ -9,6 +9,10 @@ class Project < ActiveRecord::Base
     Rails.root.join('public', 'data', self.path)
   end
 
+  def viewable? (user=nil)
+    self.public || (self.user == user)
+  end
+
   private
   def upload
     self.identifier = Digest::MD5.hexdigest(self.title + Time.now.to_s)

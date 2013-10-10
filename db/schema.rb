@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131010161641) do
+ActiveRecord::Schema.define(version: 20131010165222) do
 
   create_table "projects", force: true do |t|
     t.string   "title"
@@ -20,6 +20,7 @@ ActiveRecord::Schema.define(version: 20131010161641) do
     t.datetime "updated_at"
     t.string   "path"
     t.integer  "user_id"
+    t.boolean  "public"
   end
 
   create_table "users", force: true do |t|

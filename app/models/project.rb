@@ -3,6 +3,7 @@ class Project < ActiveRecord::Base
   attr_accessor :file_data
   validate :identifier, presence: true, uniqueness: true
   validate :title, presence: true, uniqueness: true 
+  belongs_to :user
 
   def data_path
     Rails.root.join('public', 'data', self.path)

@@ -1,6 +1,8 @@
 class ProjectsController < ApplicationController
+  before_filter :require_login, except: [:show] 
+
   def index
-    @projects = Project.all
+    @projects = current_user.projects
   end
 
   def show
@@ -8,11 +10,11 @@ class ProjectsController < ApplicationController
   end
 
   def new
-    @project = Project.new
+    @project = current_user.projects.new
   end
 
   def create
-    if @project = Project.create(project_params)
+    if @project = current_user.projects.create(project_params)
       redirect_to @project, notice: "Project created successfully!"
     else
       redirect_to :root, alert: "Failed to create new project!"

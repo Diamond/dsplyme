@@ -11,7 +11,7 @@ Showoff::Application.routes.draw do
   resources :sessions, only: [:new, :create, :destroy]
 
   # ROOT
-  root 'projects#index'
+  root 'homepage#index'
 
   # The priority is based upon order of creation: first created -> highest priority.
   # See how all your routes lay out with "rake routes".

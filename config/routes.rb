@@ -1,7 +1,16 @@
 Showoff::Application.routes.draw do
+
+  ### SPECIAL PATHS
+  get "logout" => "sessions#destroy", as: "logout"
+  get "login"  => "sessions#new", as: "login"
+  get "signup" => "users#new", as: "signup"
+  
+  ### RESOURCES
   resources :projects
   resources :users, only: [:new, :create]
   resources :sessions, only: [:new, :create, :destroy]
+
+  # ROOT
   root 'projects#index'
 
   # The priority is based upon order of creation: first created -> highest priority.

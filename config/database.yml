@@ -1,0 +1,19 @@
+development:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: dsplyme_dev
+  pool: 5
+  username: dsplyme
+  password: dstest 
+  host: localhost
+
+test:
+  adapter: mysql2
+  encoding: utf8
+  reconnect: false
+  database: dsplyme_test
+  pool: 5
+  username: dsplyme
+  password: dstest
+  host: localhost

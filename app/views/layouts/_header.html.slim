@@ -1,0 +1,11 @@
+.navbar
+  .navbar-inner
+    .container
+      a.brand
+        | dsply
+        span.text-error .me
+      ul.nav
+        li = link_to "Home", :root 
+        li = link_to "Projects", projects_path
+      .pull-right
+        = render "layouts/account"

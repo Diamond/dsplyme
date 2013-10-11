@@ -1,4 +1,10 @@
-h1 Project List
-= link_to "New Project", new_project_path
-ul
-  = render @projects
+.pull-left
+  h1 Project List
+.pull-right
+  = link_to "New Project", new_project_path, class: "btn btn-primary", style: "margin-top:15px;"
+table class="table"
+  thead
+    th Project Title
+    th Actions
+  tbody
+    = render @projects

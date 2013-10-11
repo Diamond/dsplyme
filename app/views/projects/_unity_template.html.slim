@@ -1,6 +1,6 @@
 #unityContent
   p.header
-    span Unity Web Player | #{@project.title}
+    h2.muted #{@project.title}
     .content
       #unityPlayer
         .missing
@@ -9,10 +9,11 @@
         .broken
           a href="http://unity3d.com/webplayer/" title="Unity Web Player. Install now! Restart your browser after install."
             img alt="Unity Web Player. Install now! Restart your browser after install." src="http://webplayer.unity3d.com/installation/getunityrestart.png" width="193" height="63"
-  p.footer
-    | &laquo; created with 
-    a href="http://unity3d.com/unity/" title="Go to unity3d.com"
+  div class="well well-small"
+    p.footer
+      | &laquo; created with 
+      a href="http://unity3d.com/unity/" title="Go to unity3d.com"
       | Unity 
-    | &raquo;
-  = hidden_field_tag :unity_file, @project.path 
+      | &raquo;
+    = hidden_field_tag :unity_file, @project.path 
 

@@ -7,7 +7,7 @@ Showoff::Application.routes.draw do
   
   ### RESOURCES
   resources :projects
-  resources :users, only: [:new, :create]
+  resources :users, only: [:new, :create, :edit, :update]
   resources :sessions, only: [:new, :create, :destroy]
 
   # ROOT

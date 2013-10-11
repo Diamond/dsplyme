@@ -1,1 +1,38 @@
-= render "projects/project_list"
+- if logged_in?
+  .well
+    = render "projects/project_list"
+- else
+  .hero-unit
+    h1 Welcome to dsply.me!
+    p dsply.me is a lightweight Unity web project hosting platform, and is currently in alpha! Want to try it out?
+    = link_to "Sign up here!", signup_path, class: "btn btn-primary btn-large"
+
+.row
+  .span4
+    h3 Changelog
+    h4.muted v0.0.1
+    ul
+      li First Alpha version
+      li Initial design
+      li Project upload (.zip or .unity3d directly)
+      li Public or Private projects
+      li User sign-up
+  .span4
+    h3 Upcoming Features
+    h4.muted Near Future
+    ul
+      li Better design
+      li Project comments
+      li Project READMEs in Markdown
+    h4.muted Far Future
+    ul
+      li Ratings system
+      li Per-project chat
+      li Forums
+      li Support for non-Unity web games (?)
+  .span4
+    h3 Feature Requests
+    h4.muted Top Requests
+    ul
+      li Nothing yet!
+br

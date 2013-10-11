@@ -39,6 +39,8 @@ gem 'pry'
 gem 'rubyzip', require: 'zip/zip'
 gem 'sorcery'
 
+gem 'recaptcha', require: 'recaptcha/rails'
+
 # Use ActiveModel has_secure_password
 # gem 'bcrypt-ruby', '~> 3.0.0'
 

@@ -5,7 +5,7 @@ class UsersController < ApplicationController
 
   def create
     @user = User.new(user_params)
-    if @user.save
+    if verify_recaptcha(model: @user, message: "Captcha failed! Are you a robot?") &&@user.save
       auto_login @user
       redirect_to :root, notice: "Signed up!"
     else

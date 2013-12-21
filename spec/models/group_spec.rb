@@ -1,5 +1,6 @@
 require 'spec_helper'
 
 describe Group do
-  pending "add some examples to (or delete) #{__FILE__}"
+  subject { FactoryGirl.build(:group) }
+  it { should be_valid }
 end
